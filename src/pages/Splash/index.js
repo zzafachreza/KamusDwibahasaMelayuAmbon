@@ -27,7 +27,7 @@ export default function Splash({ navigation }) {
   useEffect(() => {
     setTimeout(() => {
       navigation.replace('Home')
-    }, 1200)
+    }, 1000)
   }, [])
 
   return (
@@ -41,16 +41,6 @@ export default function Splash({ navigation }) {
     }}>
 
 
-      <View style={{
-        position: 'absolute',
-        top: 0,
-        zIndex: 99
-      }}>
-        <Image source={require('../../assets/top.png')} style={{
-          width: 150,
-          height: 140,
-        }} />
-      </View>
 
 
 

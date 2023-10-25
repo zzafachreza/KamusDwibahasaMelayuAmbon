@@ -15,13 +15,15 @@ import MyCarouser from '../../components/MyCarouser';
 import { Rating } from 'react-native-ratings';
 import { TextInput } from 'react-native';
 import { MyGap, MyPicker } from '../../components';
-
-
+import MenuDrawer from 'react-native-side-drawer'
+import Modal from 'react-native-modal';
 
 export default function Home({ navigation, route }) {
 
   const kamusData = require('./../../db/kamus.json');
   const [data, setData] = useState(kamusData)
+  const [open, setOpen] = useState(false);
+
   const [filterBy, setFilterBy] = useState('Semua');
   const [kunci, setKunci] = useState('');
   const isFocus = useIsFocused();
@@ -32,70 +34,70 @@ export default function Home({ navigation, route }) {
   useEffect(() => {
     if (isFocus) {
       _getTransaction();
-      console.log(kamusData[0])
     }
   }, [isFocus]);
 
 
   const __renderITem = ({ item, index }) => {
-    return (
-      <TouchableNativeFeedback onPress={() => navigation.navigate('Feature', item)}>
-        <View style={{
-          padding: 10,
-          marginHorizontal: 10,
-          marginVertical: 2,
-        }}>
-          <Text style={{
-            fontFamily: fonts.secondary[800],
-            fontSize: 14
-          }}>{item.Entri}</Text>
-          <Text style={{
-            fontFamily: fonts.secondary.normal,
-            fontSize: 14
-          }}>{item.Lafal}</Text>
-          <Text style={{
-            fontFamily: fonts.secondary.normal,
-            fontSize: 14
-          }}>{item.Kata_turunan}</Text>
-        </View>
-      </TouchableNativeFeedback >
-    )
+
+    if (index > 0 && item.Entri !== data[index - 1].Entri) {
+      return (
+        <TouchableNativeFeedback onPress={() => navigation.navigate('Feature', item)}>
+          <View style={{
+            padding: 10,
+            marginHorizontal: 10,
+            marginVertical: 2,
+          }}>
+            <Text style={{
+              fontFamily: fonts.secondary[800],
+              fontSize: 14
+            }}>{item.Entri}</Text>
+            <Text style={{
+              fontFamily: fonts.secondary.normal,
+              fontSize: 14
+            }}>{item.Lafal}</Text>
+            <Text style={{
+              fontFamily: fonts.secondary.normal,
+              fontSize: 14
+            }}>{item.Kata_turunan}</Text>
+          </View>
+        </TouchableNativeFeedback >
+      )
+    }
+
   }
+
 
   return (
 
     <SafeAreaView style={{
       flex: 1,
       backgroundColor: colors.white,
-      position: 'relative'
+
     }}>
 
-      <View style={{
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        zIndex: 0
-      }}>
-        <Image source={require('../../assets/top2.png')} style={{
-          width: 100,
-          height: 140,
-        }} />
-      </View>
+
+
 
 
 
 
       <View style={{
-        paddingHorizontal: 10,
       }}>
 
         <View style={{
-          padding: 10,
         }}>
           <View style={{
             flexDirection: 'row',
             alignItems: 'center'
           }}>
+            <TouchableWithoutFeedback onPress={() => setOpen(true)}>
+              <View style={{
+                flex: 0.5,
+              }}>
+                <Icon type='ionicon' name='menu-outline' size={40} color={colors.black} />
+              </View>
+            </TouchableWithoutFeedback>
             <Image source={require('../../assets/logo.png')} style={{
               width: 70,
               height: 70,
@@ -126,15 +128,7 @@ export default function Home({ navigation, route }) {
         <View style={{
           padding: 10,
         }}>
-          <MyPicker label="Cari Berdasarkan" onValueChange={x => {
-            setFilterBy(x)
-          }} iconname="options" data={[
-            { label: 'Semua', value: 'Semua' },
-            { label: 'Entri', value: 'Entri' },
-            { label: 'Kata turunan', value: 'Kata_turunan' },
-            { label: 'Lafal', value: 'Lafal' },
-          ]} />
-          <MyGap jarak={10} />
+
           <TextInput value={kunci} onChangeText={x => {
             setKunci(x);
             if (filterBy == 'Semua') {
@@ -199,9 +193,110 @@ export default function Home({ navigation, route }) {
         </View>
       </View>
 
+
       <FlatList data={data} renderItem={__renderITem} />
 
 
+      <Modal
+        style={{
+        }}
+        hasBackdrop={true}
+        backdropOpacity={0.6}
+        backdropColor={colors.black}
+        // animationType="fade"
+        coverScreen={true}
+        backdropTransitionInTiming={100}
+        backdropTransitionOutTiming={100}
+        deviceHeight={windowHeight}
+        onBackdropPress={() => setOpen(false)}
+        animationOut="slideOutLeft"
+        animationIn="slideInLeft"
+        animationInTiming={100}
+        animationOutTiming={100}
+        isVisible={open}
+
+        onRequestClose={() => {
+          setOpen(false)
+        }}>
+        <View style={{
+          marginLeft: -20,
+          marginTop: -22,
+          marginBottom: -22,
+          backgroundColor: colors.white,
+          flex: 1,
+
+          width: windowWidth / 2,
+          borderBottomRightRadius: windowWidth,
+          borderTopRightRadius: 0,
+        }}>
+          <View style={{
+            paddingTop: 20,
+            paddingBottom: 20,
+            backgroundColor: colors.white,
+            borderBottomWidth: 1,
+            borderBottomColor: colors.border,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <Image source={require('../../assets/logo.png')} style={{
+              width: 70,
+              height: 70,
+            }} />
+            <Text style={{
+              fontFamily: fonts.secondary[800],
+              color: colors.black,
+              fontSize: 15,
+            }}>KAMUS DWIBAHASA</Text>
+            <Text style={{
+              fontFamily: fonts.secondary[800],
+              fontSize: 10,
+              color: colors.secondary
+            }}>MELAYU AMBON - INDONESIA</Text>
+          </View>
+
+          <TouchableWithoutFeedback onPress={() => {
+            navigation.navigate('Kelas');
+            setOpen(false);
+          }}>
+            <View style={{
+              marginVertical: 10,
+              padding: 10,
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}>
+              <Icon type='ionicon' name='bookmark' size={15} />
+              <Text style={{
+                fontFamily: fonts.secondary[600],
+                fontSize: 15,
+                flex: 1,
+                left: 10,
+                color: colors.black
+              }}>Kelas Kata</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
+          <TouchableWithoutFeedback onPress={() => {
+            navigation.navigate('Jenis');
+            setOpen(false);
+          }}>
+            <View style={{
+              marginVertical: 10,
+              padding: 10,
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}>
+              <Icon type='ionicon' name='bookmark' size={15} />
+              <Text style={{
+                fontFamily: fonts.secondary[600],
+                fontSize: 15,
+                flex: 1,
+                left: 10,
+                color: colors.black
+              }}>Jenis</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+      </Modal>
     </SafeAreaView >
   )
 }
