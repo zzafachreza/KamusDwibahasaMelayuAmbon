@@ -12,6 +12,8 @@ import {
   Jenis,
   JenisData,
   JenisDetail,
+  Tentang,
+  Petunjuk,
 
 
 
@@ -148,6 +150,53 @@ export default function Router() {
 
       }} />
       <Stack.Screen name="JenisDetail" component={JenisDetail} options={{
+        headerShown: false,
+        cardStyleInterpolator: ({ current, layouts }) => {
+          return {
+            cardStyle: {
+
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [layouts.screen.width, 0],
+                  }),
+
+
+                },
+
+              ],
+            },
+          };
+        },
+
+      }} />
+
+
+      <Stack.Screen name="Tentang" component={Tentang} options={{
+        headerShown: false,
+        cardStyleInterpolator: ({ current, layouts }) => {
+          return {
+            cardStyle: {
+
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [layouts.screen.width, 0],
+                  }),
+
+
+                },
+
+              ],
+            },
+          };
+        },
+
+      }} />
+
+      <Stack.Screen name="Petunjuk" component={Petunjuk} options={{
         headerShown: false,
         cardStyleInterpolator: ({ current, layouts }) => {
           return {
