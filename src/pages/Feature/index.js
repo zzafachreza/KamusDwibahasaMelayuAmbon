@@ -17,11 +17,11 @@ export default function Kategori({ navigation, route }) {
 
     const [data, setData] = useState(route.params);
 
+    console.log(route.params.Entri.split(" (").length);
+    let KEY = route.params.Entri.split(" (").length > 1 ? route.params.Entri.split(" (")[0].trim() + ' (' : route.params.Entri.split(" (")[0].trim();
 
-    let KEY = route.params.Entri.split(" (")[0].trim() + ' (';
-
-    const filterData = kamusData.filter(i => i.Entri.toLowerCase().indexOf(KEY.toLowerCase()) > -1);
-
+    const filterData = route.params.Entri.split(" (").length > 1 ? kamusData.filter(i => i.Entri.toLowerCase().indexOf(KEY.toLowerCase()) > -1) : kamusData.filter(i => i.Entri.toLowerCase() == KEY.toLowerCase());
+    console.log(filterData)
 
 
 
@@ -30,7 +30,7 @@ export default function Kategori({ navigation, route }) {
         // 👇️ using AND (&&) operator
         return i.Entri == data.Entri;
     });
-    console.log(TURUNAN);
+
 
 
 
