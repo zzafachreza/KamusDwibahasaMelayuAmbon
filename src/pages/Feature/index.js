@@ -18,6 +18,11 @@ export default function Kategori({ navigation, route }) {
     const [data, setData] = useState(route.params);
 
 
+    let KEY = route.params.Entri.split(" (")[0].trim() + ' (';
+
+    const filterData = kamusData.filter(i => i.Entri.toLowerCase().indexOf(KEY.toLowerCase()) > -1);
+
+
 
 
 
@@ -38,145 +43,303 @@ export default function Kategori({ navigation, route }) {
             padding: 10,
         }}>
 
-            <ScrollView>
-                <View>
-                    <Text style={{
-                        fontFamily: fonts.secondary[800],
-                        fontSize: 25,
-                    }}>{data.Entri}</Text>
-                    <Text style={{
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 25,
-                    }}>{data.Kata_turunan}</Text>
-                    <Text style={{
-                        fontFamily: fonts.secondary.normal,
-                        fontSize: 25,
-                    }}>{data.Lafal}</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <View style={{
+                {filterData.length > 0 && filterData.map((item, index) => {
 
-                        padding: 10,
-                        borderRadius: 10,
+                    const TURUNAN = kamusData.filter(i => {
+                        // 👇️ using AND (&&) operator
+                        return i.Entri == item.Entri;
+                    });
 
-                        marginVertical: 5,
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: 20,
-                            fontStyle: 'italic'
-                        }}>{data.Kelas_Kata_1}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Definisi_1}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[600],
-                            fontSize: 14,
-                        }}>{data.Contoh}</Text>
+                    if (index > 0 && item.Entri !== filterData[index - 1].Entri) {
+                        return (
+                            <View>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[800],
+                                    fontSize: 25,
+                                }}>{item.Entri}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 25,
+                                }}>{item.Kata_turunan}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 25,
+                                }}>{item.Lafal}</Text>
 
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Terjemahan_Contoh}</Text>
-                    </View>
+                                <View style={{
 
-                    <View style={{
+                                    padding: 10,
+                                    borderRadius: 10,
 
-                        padding: 10,
-                        borderRadius: 10,
+                                    marginVertical: 5,
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 20,
+                                        color: colors.danger,
+                                    }}>{item.Kelas_Kata_1}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Definisi_1}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 14,
+                                        fontStyle: 'italic'
+                                    }}>{item.Contoh}</Text>
 
-                        marginVertical: 5,
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: 20,
-                            fontStyle: 'italic'
-                        }}>{data.Kelas_Kata_2}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Definisi_2}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[600],
-                            fontSize: 14,
-                        }}>{data.Contoh_1}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Terjemahan_Contoh}</Text>
+                                </View>
 
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Terjemahan_Contoh_2}</Text>
-                    </View>
+                                <View style={{
 
-                    <View style={{
+                                    padding: 10,
+                                    borderRadius: 10,
 
-                        padding: 10,
-                        borderRadius: 10,
+                                    marginVertical: 5,
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 20,
+                                        color: colors.danger,
+                                    }}>{item.Kelas_Kata_2}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Definisi_2}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 14,
+                                        fontStyle: 'italic'
+                                    }}>{item.Contoh_1}</Text>
 
-                        marginVertical: 5,
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: 20,
-                            fontStyle: 'italic'
-                        }}>{data.Kelas_Kata_3}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Definisi_3}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[600],
-                            fontSize: 14,
-                        }}>{data.Contoh_3}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Terjemahan_Contoh_2}</Text>
+                                </View>
 
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Terjemahan_Contoh_4}</Text>
-                    </View>
-                </View>
+                                <View style={{
+
+                                    padding: 10,
+                                    borderRadius: 10,
+
+                                    marginVertical: 5,
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 20,
+                                        color: colors.danger,
+                                    }}>{item.Kelas_Kata_3}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Definisi_3}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 14,
+                                        fontStyle: 'italic'
+                                    }}>{item.Contoh_3}</Text>
+
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Terjemahan_Contoh_4}</Text>
+                                </View>
 
 
+                                {TURUNAN.length > 1 &&
+                                    <View>
 
-                {TURUNAN.length > 0 &&
-                    <View>
-                        <Text style={{
-                            fontFamily: fonts.secondary[800],
-                            fontSize: 17,
-                        }}>kata Turunan :</Text>
 
-                        <ScrollView horizontal style={{
-                            paddingVertical: 10,
-                        }}>
-                            {TURUNAN.map(i => {
-
-                                if (i.Kata_turunan !== '') {
-                                    return (
-                                        <TouchableWithoutFeedback onPress={() => {
-                                            setData(i)
+                                        <View style={{
+                                            paddingVertical: 10,
                                         }}>
-                                            <View style={{
-                                                margin: 5,
-                                                borderColor: colors.primary,
-                                                borderRadius: 10,
-                                                padding: 10,
-                                                borderWidth: 1,
-                                                justifyContent: 'center',
-                                                alignItems: 'center'
-                                            }}>
-                                                <Text style={{
-                                                    fontFamily: fonts.primary[600],
-                                                    color: colors.secondary
-                                                }}>{i.Kata_turunan}</Text>
-                                            </View>
+                                            <Text><Text style={{
+                                                fontFamily: fonts.secondary[800],
+                                                fontSize: 15,
+                                            }}>kata Turunan : </Text>
+                                                {TURUNAN.map((i, index) => {
 
-                                        </TouchableWithoutFeedback>
-                                    )
+                                                    if (i.Kata_turunan !== '') {
+                                                        return (
+                                                            <TouchableWithoutFeedback onPress={() => {
+                                                                // setData(i)
+                                                                navigation.navigate('Turunan', i)
+                                                            }}>
+
+                                                                <Text style={{
+                                                                    fontFamily: fonts.primary[600],
+                                                                    color: i.Kata_turunan == data.Kata_turunan ? colors.black : colors.secondary,
+                                                                    fontSize: 15,
+                                                                }}>{i.Kata_turunan}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
+
+
+                                                            </TouchableWithoutFeedback>
+                                                        )
+                                                    }
+
+                                                })}
+                                            </Text>
+                                        </View>
+                                    </View>
                                 }
+                            </View>
 
-                            })}
-                        </ScrollView>
-                    </View>
-                }
+
+                        )
+                    } else if (index == 0) {
+                        return (
+                            <View>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[800],
+                                    fontSize: 25,
+                                }}>{item.Entri}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 25,
+                                }}>{item.Kata_turunan}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 25,
+                                }}>{item.Lafal}</Text>
+
+                                <View style={{
+
+                                    padding: 10,
+                                    borderRadius: 10,
+
+                                    marginVertical: 5,
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 20,
+                                        color: colors.danger,
+                                    }}>{item.Kelas_Kata_1}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Definisi_1}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 14,
+                                        fontStyle: 'italic'
+                                    }}>{item.Contoh}</Text>
+
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Terjemahan_Contoh}</Text>
+                                </View>
+
+                                <View style={{
+
+                                    padding: 10,
+                                    borderRadius: 10,
+
+                                    marginVertical: 5,
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 20,
+                                        color: colors.danger,
+                                    }}>{item.Kelas_Kata_2}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Definisi_2}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 14,
+                                        fontStyle: 'italic'
+                                    }}>{item.Contoh_1}</Text>
+
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Terjemahan_Contoh_2}</Text>
+                                </View>
+
+                                <View style={{
+
+                                    padding: 10,
+                                    borderRadius: 10,
+
+                                    marginVertical: 5,
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 20,
+                                        color: colors.danger,
+                                    }}>{item.Kelas_Kata_3}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Definisi_3}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 14,
+                                        fontStyle: 'italic'
+                                    }}>{item.Contoh_3}</Text>
+
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 14,
+                                    }}>{item.Terjemahan_Contoh_4}</Text>
+                                </View>
+
+
+                                {TURUNAN.length > 1 &&
+                                    <View>
+
+
+                                        <View style={{
+                                            paddingVertical: 10,
+                                        }}>
+                                            <Text><Text style={{
+                                                fontFamily: fonts.secondary[800],
+                                                fontSize: 15,
+                                            }}>kata Turunan : </Text>
+                                                {TURUNAN.map((i, index) => {
+
+                                                    if (i.Kata_turunan !== '') {
+                                                        return (
+                                                            <TouchableWithoutFeedback onPress={() => {
+                                                                // setData(i)
+                                                                navigation.navigate('Turunan', i)
+                                                            }}>
+
+                                                                <Text style={{
+                                                                    fontFamily: fonts.primary[600],
+                                                                    color: i.Kata_turunan == data.Kata_turunan ? colors.black : colors.secondary,
+                                                                    fontSize: 15,
+                                                                }}>{i.Kata_turunan}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
+
+
+                                                            </TouchableWithoutFeedback>
+                                                        )
+                                                    }
+
+                                                })}
+                                            </Text>
+                                        </View>
+                                    </View>
+                                }
+                            </View>
+
+
+                        )
+                    }
+                })}
+
+
+
+
             </ScrollView>
 
 

@@ -9,6 +9,8 @@ import KelasData from './KelasData';
 import KelasDetail from './KelasDetail';
 import Tentang from './Tentang';
 import Petunjuk from './Petunjuk';
+import Turunan from './Turunan';
+import Pencarian from './Pencarian';
 
 
 
@@ -24,7 +26,9 @@ export {
   JenisDetail,
   Kelas,
   KelasData,
-  KelasDetail
+  KelasDetail,
+  Turunan,
+  Pencarian
 
 
 
