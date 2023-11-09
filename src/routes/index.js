@@ -38,8 +38,33 @@ export default function Router() {
       />
 
 
-      <Stack.Screen name="Feature" component={Feature} options={{ headerShown: false }} />
+      <Stack.Screen name="Feature" component={Feature} options={{
+        headerShown: true,
+        headerTintColor: colors.white,
+        headerTitle: 'Makna',
+        headerStyle: {
+          backgroundColor: colors.primary,
+        },
+        cardStyleInterpolator: ({ current, layouts }) => {
+          return {
+            cardStyle: {
 
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [layouts.screen.width, 0],
+                  }),
+
+
+                },
+
+              ],
+            },
+          };
+        },
+
+      }} />
       <Stack.Screen name="Kelas" component={Kelas} options={{
         headerShown: false,
         cardStyleInterpolator: ({ current, layouts }) => {

@@ -68,11 +68,10 @@ export default function Kategori({ navigation, route }) {
                                     fontSize: 25,
                                 }}>{item.Lafal}</Text>
 
-                                <View style={{
 
+                                {item.Kelas_Kata_1.length > 0 && <View style={{
                                     padding: 10,
                                     borderRadius: 10,
-
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
@@ -89,18 +88,15 @@ export default function Kategori({ navigation, route }) {
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh}</Text>
-
                                     <Text style={{
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh}</Text>
-                                </View>
+                                </View>}
 
-                                <View style={{
-
+                                {item.Kelas_Kata_2.length > 0 && <View style={{
                                     padding: 10,
                                     borderRadius: 10,
-
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
@@ -122,13 +118,11 @@ export default function Kategori({ navigation, route }) {
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_2}</Text>
-                                </View>
+                                </View>}
 
-                                <View style={{
-
+                                {item.Kelas_Kata_3.length > 0 && <View style={{
                                     padding: 10,
                                     borderRadius: 10,
-
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
@@ -145,12 +139,12 @@ export default function Kategori({ navigation, route }) {
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh_3}</Text>
-
                                     <Text style={{
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_4}</Text>
-                                </View>
+                                </View>}
+
 
 
                                 {TURUNAN.length > 1 &&
@@ -209,11 +203,9 @@ export default function Kategori({ navigation, route }) {
                                     fontSize: 25,
                                 }}>{item.Lafal}</Text>
 
-                                <View style={{
-
+                                {item.Kelas_Kata_1.length > 0 && <View style={{
                                     padding: 10,
                                     borderRadius: 10,
-
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
@@ -230,18 +222,15 @@ export default function Kategori({ navigation, route }) {
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh}</Text>
-
                                     <Text style={{
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh}</Text>
-                                </View>
+                                </View>}
 
-                                <View style={{
-
+                                {item.Kelas_Kata_2.length > 0 && <View style={{
                                     padding: 10,
                                     borderRadius: 10,
-
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
@@ -263,13 +252,11 @@ export default function Kategori({ navigation, route }) {
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_2}</Text>
-                                </View>
+                                </View>}
 
-                                <View style={{
-
+                                {item.Kelas_Kata_3.length > 0 && <View style={{
                                     padding: 10,
                                     borderRadius: 10,
-
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
@@ -286,12 +273,11 @@ export default function Kategori({ navigation, route }) {
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh_3}</Text>
-
                                     <Text style={{
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_4}</Text>
-                                </View>
+                                </View>}
 
 
                                 {TURUNAN.length > 1 &&
