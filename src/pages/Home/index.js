@@ -131,7 +131,7 @@ export default function Home({ navigation, route }) {
         }}>Selamat datang di Aplikasi Kamus Dwibahasa Melayu Ambon-Indonesia
           Kantor Bahasa Provinsi Maluku
         </Text>
-        <Image source={require('../../assets/logo.png')} style={{
+        <Image source={require('../../assets/or.png')} style={{
           width: 180,
           height: 180,
           marginVertical: 50,

@@ -35,48 +35,59 @@ export default function Splash({ navigation }) {
       flex: 1,
       padding: 0,
       backgroundColor: colors.white,
-      justifyContent: 'center',
-      position: 'relative'
-
     }}>
 
+      <View style={{
+        padding: 10,
+        height: 120,
+        backgroundColor: colors.primary,
+        justifyContent: 'center'
+      }}>
+        <Text style={{
+          fontFamily: fonts.secondary[600],
+          fontSize: 25,
+          textAlign: 'center',
+          color: colors.white
+        }}>KAMUS DWIBAHASA</Text>
+        <Text style={{
+          fontFamily: fonts.secondary[600],
+          fontSize: 25,
+          textAlign: 'center',
+          color: colors.white,
+        }}>MELAYU AMBON-INDONESIA</Text>
+      </View>
+      <View style={{
+        height: 40,
+        backgroundColor: colors.black
+      }} />
 
-
-
+      <View style={{
+        flex: 1,
+        backgroundColor: colors.white,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Image source={require('../../assets/or.png')} style={{
+          width: windowWidth / 1.5,
+          height: windowWidth / 1.5,
+        }} />
+      </View>
 
 
 
       <View style={{
-        flex: 1,
+        flex: 0.5,
+        backgroundColor: colors.primary,
         justifyContent: 'center',
         alignItems: 'center'
       }}>
         <Image source={require('../../assets/logo.png')} style={{
-          width: windowWidth / 1.5,
-          height: windowWidth / 1.5,
-          resizeMode: 'contain'
+          width: windowWidth / 4,
+          height: windowWidth / 4,
         }} />
-
-        <Text style={{
-          fontFamily: fonts.secondary[800],
-          fontSize: 40,
-          textAlign: 'center'
-        }}>Kamus Dwibahasa</Text>
-        <Text style={{
-          fontFamily: fonts.secondary[800],
-          fontSize: 30,
-          textAlign: 'center',
-          color: colors.secondary,
-        }}>Melayu Ambon - Indonesia</Text>
-
       </View>
 
-      <View style={{
-        marginBottom: 20,
-        padding: 10,
-      }}>
-        <ActivityIndicator size="large" color={colors.secondary} />
-      </View>
+
 
     </SafeAreaView>
   );
