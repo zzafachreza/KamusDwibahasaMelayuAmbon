@@ -17,12 +17,10 @@ export default function Kategori({ navigation, route }) {
 
     const [data, setData] = useState(route.params);
 
-    console.log(route.params.Entri.split(" (").length);
+
     let KEY = route.params.Entri.split(" (").length > 1 ? route.params.Entri.split(" (")[0].trim() + ' (' : route.params.Entri.split(" (")[0].trim();
-
-    const filterData = route.params.Entri.split(" (").length > 1 ? kamusData.filter(i => i.Entri.toLowerCase().indexOf(KEY.toLowerCase()) > -1) : kamusData.filter(i => i.Entri.toLowerCase() == KEY.toLowerCase());
-    console.log(filterData)
-
+    console.log('ini key', KEY);
+    const filterData = route.params.Entri.split(" (").length > 1 ? kamusData.filter(i => i.Entri.substring(0, KEY.length) == KEY.toLowerCase()) : kamusData.filter(i => i.Entri.toLowerCase() == KEY.toLowerCase());
 
 
 
@@ -75,20 +73,24 @@ export default function Kategori({ navigation, route }) {
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
-                                        fontFamily: fonts.secondary.normal,
-                                        fontSize: 20,
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 16,
                                         color: colors.danger,
                                     }}>{item.Kelas_Kata_1}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Definisi_1}</Text>
                                     <Text style={{
+                                        marginTop: 10,
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[600],
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh}</Text>
@@ -100,21 +102,24 @@ export default function Kategori({ navigation, route }) {
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
-                                        fontFamily: fonts.secondary.normal,
-                                        fontSize: 20,
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 16,
                                         color: colors.danger,
                                     }}>{item.Kelas_Kata_2}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Definisi_2}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[600],
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh_1}</Text>
 
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_2}</Text>
@@ -126,20 +131,23 @@ export default function Kategori({ navigation, route }) {
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
-                                        fontFamily: fonts.secondary.normal,
-                                        fontSize: 20,
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 16,
                                         color: colors.danger,
                                     }}>{item.Kelas_Kata_3}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Definisi_3}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[600],
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh_3}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_4}</Text>
@@ -160,7 +168,10 @@ export default function Kategori({ navigation, route }) {
                                             }}>kata Turunan : </Text>
                                                 {TURUNAN.map((i, index) => {
 
-                                                    if (i.Kata_turunan !== '') {
+                                                    let KATA_TURUNAN = i.Kata_turunan.split(' (').length > 0 ? i.Kata_turunan.split(' (')[0] : i.Kata_turunan;
+
+                                                    if (i.Kata_turunan !== '' && (TURUNAN.length > 0 && KATA_TURUNAN !== TURUNAN[index - 1].Kata_turunan.split(' (')[0])) {
+
                                                         return (
                                                             <TouchableWithoutFeedback onPress={() => {
                                                                 // setData(i)
@@ -171,7 +182,7 @@ export default function Kategori({ navigation, route }) {
                                                                     fontFamily: fonts.primary[600],
                                                                     color: i.Kata_turunan == data.Kata_turunan ? colors.black : colors.secondary,
                                                                     fontSize: 15,
-                                                                }}>{i.Kata_turunan}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
+                                                                }}>{i.Kata_turunan.split(' (').length > 0 ? i.Kata_turunan.split(' (')[0] : i.Kata_turunan}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
 
 
                                                             </TouchableWithoutFeedback>
@@ -209,20 +220,23 @@ export default function Kategori({ navigation, route }) {
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
-                                        fontFamily: fonts.secondary.normal,
-                                        fontSize: 20,
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 16,
                                         color: colors.danger,
                                     }}>{item.Kelas_Kata_1}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Definisi_1}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[600],
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh}</Text>
@@ -234,21 +248,24 @@ export default function Kategori({ navigation, route }) {
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
-                                        fontFamily: fonts.secondary.normal,
-                                        fontSize: 20,
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 16,
                                         color: colors.danger,
                                     }}>{item.Kelas_Kata_2}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Definisi_2}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[600],
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh_1}</Text>
 
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_2}</Text>
@@ -260,20 +277,23 @@ export default function Kategori({ navigation, route }) {
                                     marginVertical: 5,
                                 }}>
                                     <Text style={{
-                                        fontFamily: fonts.secondary.normal,
-                                        fontSize: 20,
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: 16,
                                         color: colors.danger,
                                     }}>{item.Kelas_Kata_3}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Definisi_3}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[600],
                                         fontSize: 14,
                                         fontStyle: 'italic'
                                     }}>{item.Contoh_3}</Text>
                                     <Text style={{
+                                        marginTop: 10,
                                         fontFamily: fonts.secondary[400],
                                         fontSize: 14,
                                     }}>{item.Terjemahan_Contoh_4}</Text>
@@ -292,8 +312,10 @@ export default function Kategori({ navigation, route }) {
                                                 fontSize: 15,
                                             }}>kata Turunan : </Text>
                                                 {TURUNAN.map((i, index) => {
+                                                    let KATA_TURUNAN = i.Kata_turunan.split(' (').length > 0 ? i.Kata_turunan.split(' (')[0] : i.Kata_turunan;
 
-                                                    if (i.Kata_turunan !== '') {
+                                                    if (i.Kata_turunan !== '' && (KATA_TURUNAN !== TURUNAN[index - 1].Kata_turunan.split(' (')[0])) {
+
                                                         return (
                                                             <TouchableWithoutFeedback onPress={() => {
                                                                 // setData(i)
@@ -304,7 +326,7 @@ export default function Kategori({ navigation, route }) {
                                                                     fontFamily: fonts.primary[600],
                                                                     color: i.Kata_turunan == data.Kata_turunan ? colors.black : colors.secondary,
                                                                     fontSize: 15,
-                                                                }}>{i.Kata_turunan}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
+                                                                }}>{KATA_TURUNAN}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
 
 
                                                             </TouchableWithoutFeedback>

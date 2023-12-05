@@ -125,11 +125,24 @@ export default function Home({ navigation, route }) {
       }}>
         <Text style={{
           fontFamily: fonts.secondary[600],
-          fontSize: 20,
+          fontSize: windowWidth / 25,
           color: colors.black,
           textAlign: 'center'
-        }}>Selamat datang di Aplikasi Kamus Dwibahasa Melayu Ambon-Indonesia
-          Kantor Bahasa Provinsi Maluku
+        }}>Selamat datang di aplikasi
+        </Text>
+        <Text style={{
+          fontFamily: fonts.secondary[600],
+          fontSize: windowWidth / 25,
+          color: colors.black,
+          textAlign: 'center'
+        }}>Kamus Dwibahasa Melayu Ambon-Indonesia
+        </Text>
+        <Text style={{
+          fontFamily: fonts.secondary[600],
+          fontSize: windowWidth / 25,
+          color: colors.black,
+          textAlign: 'center'
+        }}>Kantor Bahasa Provinsi Maluku
         </Text>
         <Image source={require('../../assets/or.png')} style={{
           width: 180,
