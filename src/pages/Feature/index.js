@@ -61,10 +61,78 @@ export default function Kategori({ navigation, route }) {
                                     fontFamily: fonts.secondary[600],
                                     fontSize: 25,
                                 }}>{item.Kata_turunan}</Text>
-                                <Text style={{
-                                    fontFamily: fonts.secondary.normal,
-                                    fontSize: 25,
-                                }}>{item.Lafal}</Text>
+
+                                {item.Lafal.indexOf(";") <= 0 && <>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 25,
+                                    }}>{item.Lafal}</Text>
+                                </>}
+
+                                {/* KHUSUS LAFAL */}
+                                {item.Lafal.indexOf(";") > 0 && item.Lafal.split(";").length == 2 &&
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[0]}</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary[400],
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>;</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[1]}</Text>
+                                    </View>
+                                }
+
+                                {item.Lafal.indexOf(";") > 0 && item.Lafal.split(";").length == 3 &&
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[0]}</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary[400],
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>;</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[1]}</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary[400],
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>;</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[2]}</Text>
+                                    </View>
+                                }
 
 
                                 {item.Kelas_Kata_1.length > 0 && <View style={{
@@ -209,10 +277,78 @@ export default function Kategori({ navigation, route }) {
                                     fontFamily: fonts.secondary[600],
                                     fontSize: 25,
                                 }}>{item.Kata_turunan}</Text>
-                                <Text style={{
-                                    fontFamily: fonts.secondary.normal,
-                                    fontSize: 25,
-                                }}>{item.Lafal}</Text>
+
+                                {/* KHUSUS LAFAL */}
+                                {item.Lafal.indexOf(";") <= 0 && <>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 25,
+                                    }}>{item.Lafal}</Text>
+                                </>}
+
+                                {item.Lafal.indexOf(";") > 0 && item.Lafal.split(";").length == 2 &&
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[0]}</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary[400],
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>;</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[1]}</Text>
+                                    </View>
+                                }
+
+                                {item.Lafal.indexOf(";") > 0 && item.Lafal.split(";").length == 3 &&
+                                    <View style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[0]}</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary[400],
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>;</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: 25,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[1]}</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary[400],
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>;</Text>
+                                        <Text style={{
+                                            fontFamily: fonts.secondary.normal,
+                                            fontSize: windowWidth / 15,
+                                            fontWeight: 'normal',
+                                            color: colors.black,
+                                        }}>{item.Lafal.split(";")[2]}</Text>
+                                    </View>
+                                }
 
                                 {item.Kelas_Kata_1.length > 0 && <View style={{
                                     padding: 10,
