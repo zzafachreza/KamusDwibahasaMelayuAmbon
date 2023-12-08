@@ -39,105 +39,174 @@ export default function Turunan({ navigation, route }) {
         }}>
 
             <ScrollView>
-                <View>
-                    {/* <Text style={{
-                        fontFamily: fonts.secondary[800],
-                        fontSize: 25,
-                    }}>{data.Entri}</Text> */}
-                    <Text style={{
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 25,
-                    }}>{data.Kata_turunan}</Text>
+
+                <Text style={{
+                    fontFamily: fonts.secondary[800],
+                    fontSize: 25,
+                }}>{data.Entri}</Text>
+                <Text style={{
+                    fontFamily: fonts.secondary[600],
+                    fontSize: 25,
+                }}>{data.Kata_turunan}</Text>
+
+                {data.Lafal.indexOf(";") <= 0 && <>
                     <Text style={{
                         fontFamily: fonts.secondary.normal,
                         fontSize: 25,
                     }}>{data.Lafal}</Text>
+                </>}
 
+                {/* KHUSUS LAFAL */}
+                {data.Lafal.indexOf(";") > 0 && data.Lafal.split(";").length == 2 &&
                     <View style={{
-
-                        padding: 10,
-                        borderRadius: 10,
-
-                        marginVertical: 5,
+                        flexDirection: 'row',
+                        alignItems: 'center'
                     }}>
                         <Text style={{
                             fontFamily: fonts.secondary.normal,
-                            fontSize: 20,
-                            color: colors.danger,
-                        }}>{data.Kelas_Kata_1}</Text>
+                            fontSize: 25,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>{data.Lafal.split(";")[0]}</Text>
                         <Text style={{
                             fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Definisi_1}</Text>
+                            fontSize: 25,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>;</Text>
                         <Text style={{
-                            fontFamily: fonts.secondary[600],
-                            fontSize: 14,
-                            fontStyle: 'italic'
-                        }}>{data.Contoh}</Text>
-
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Terjemahan_Contoh}</Text>
+                            fontFamily: fonts.secondary.normal,
+                            fontSize: 25,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>{data.Lafal.split(";")[1]}</Text>
                     </View>
+                }
 
+                {data.Lafal.indexOf(";") > 0 && data.Lafal.split(";").length == 3 &&
                     <View style={{
-
-                        padding: 10,
-                        borderRadius: 10,
-
-                        marginVertical: 5,
+                        flexDirection: 'row',
+                        alignItems: 'center'
                     }}>
                         <Text style={{
                             fontFamily: fonts.secondary.normal,
-                            fontSize: 20,
-                            color: colors.danger,
-                        }}>{data.Kelas_Kata_2}</Text>
+                            fontSize: windowWidth / 15,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>{data.Lafal.split(";")[0]}</Text>
                         <Text style={{
                             fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Definisi_2}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[600],
-                            fontSize: 14,
-                            fontStyle: 'italic'
-                        }}>{data.Contoh_1}</Text>
-
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Terjemahan_Contoh_2}</Text>
-                    </View>
-
-                    <View style={{
-
-                        padding: 10,
-                        borderRadius: 10,
-
-                        marginVertical: 5,
-                    }}>
+                            fontSize: windowWidth / 15,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>;</Text>
                         <Text style={{
                             fontFamily: fonts.secondary.normal,
-                            fontSize: 20,
-                            color: colors.danger,
-                        }}>{data.Kelas_Kata_3}</Text>
+                            fontSize: windowWidth / 15,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>{data.Lafal.split(";")[1]}</Text>
                         <Text style={{
                             fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Definisi_3}</Text>
+                            fontSize: windowWidth / 15,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>;</Text>
                         <Text style={{
-                            fontFamily: fonts.secondary[600],
-                            fontSize: 14,
-                            fontStyle: 'italic'
-                        }}>{data.Contoh_3}</Text>
-
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 14,
-                        }}>{data.Terjemahan_Contoh_4}</Text>
+                            fontFamily: fonts.secondary.normal,
+                            fontSize: windowWidth / 15,
+                            fontWeight: 'normal',
+                            color: colors.black,
+                        }}>{data.Lafal.split(";")[2]}</Text>
                     </View>
-                </View>
+                }
 
+
+                {data.Kelas_Kata_1.length > 0 && <View style={{
+                    padding: 10,
+                    borderRadius: 10,
+                    marginVertical: 5,
+                }}>
+                    <Text style={{
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 16,
+                        color: colors.danger,
+                    }}>{data.Kelas_Kata_1}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[400],
+                        fontSize: 14,
+                    }}>{data.Definisi_1}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 14,
+                        fontStyle: 'italic'
+                    }}>{data.Contoh}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[400],
+                        fontSize: 14,
+                    }}>{data.Terjemahan_Contoh}</Text>
+                </View>}
+
+                {data.Kelas_Kata_2.length > 0 && <View style={{
+                    padding: 10,
+                    borderRadius: 10,
+                    marginVertical: 5,
+                }}>
+                    <Text style={{
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 16,
+                        color: colors.danger,
+                    }}>{data.Kelas_Kata_2}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[400],
+                        fontSize: 14,
+                    }}>{data.Definisi_2}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 14,
+                        fontStyle: 'italic'
+                    }}>{data.Contoh_1}</Text>
+
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[400],
+                        fontSize: 14,
+                    }}>{data.Terjemahan_Contoh_2}</Text>
+                </View>}
+
+                {data.Kelas_Kata_3.length > 0 && <View style={{
+                    padding: 10,
+                    borderRadius: 10,
+                    marginVertical: 5,
+                }}>
+                    <Text style={{
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 16,
+                        color: colors.danger,
+                    }}>{data.Kelas_Kata_3}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[400],
+                        fontSize: 14,
+                    }}>{data.Definisi_3}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: 14,
+                        fontStyle: 'italic'
+                    }}>{data.Contoh_3}</Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.secondary[400],
+                        fontSize: 14,
+                    }}>{data.Terjemahan_Contoh_4}</Text>
+                </View>}
 
 
 
