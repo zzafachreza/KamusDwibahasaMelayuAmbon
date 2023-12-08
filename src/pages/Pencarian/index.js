@@ -209,10 +209,78 @@ export default function Pencarian({ navigation, route }) {
                                 }}>{item.Lafal.split(";")[2]}</Text>
                             </View>
                         }
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: 14
-                        }}>{item.Kata_turunan}</Text>
+
+
+                        {/* KHUSUS TURUNAN */}
+                        {item.Kata_turunan.indexOf(";") <= 0 && <>
+                            <Text style={{
+                                fontFamily: fonts.secondary.normal,
+                                fontSize: 14,
+                            }}>{item.Kata_turunan}</Text>
+                        </>}
+                        {item.Kata_turunan.indexOf(";") > 0 && item.Kata_turunan.split(";").length == 2 &&
+                            <View style={{
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>{item.Kata_turunan.split(";")[0]}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>;</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>{item.Kata_turunan.split(";")[1]}</Text>
+                            </View>
+                        }
+
+                        {item.Kata_turunan.indexOf(";") > 0 && item.Kata_turunan.split(";").length == 3 &&
+                            <View style={{
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>{item.Kata_turunan.split(";")[0]}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>;</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>{item.Kata_turunan.split(";")[1]}</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>;</Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 14,
+                                    fontWeight: 'normal',
+                                    color: colors.black,
+                                }}>{item.Kata_turunan.split(";")[2]}</Text>
+                            </View>
+                        }
                     </View>
                 </TouchableNativeFeedback >
             )
