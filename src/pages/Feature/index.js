@@ -236,9 +236,9 @@ export default function Kategori({ navigation, route }) {
                                             }}>kata Turunan : </Text>
                                                 {TURUNAN.map((i, index) => {
 
-                                                    let KATA_TURUNAN = i.Kata_turunan.split(' (').length > 0 ? i.Kata_turunan.split(' (')[0] : i.Kata_turunan;
+                                                    let KATA_TURUNAN = i.Kata_turunan;
 
-                                                    if (i.Kata_turunan !== '' && (TURUNAN.length > 0 && KATA_TURUNAN !== TURUNAN[index - 1].Kata_turunan.split(' (')[0])) {
+                                                    if (i.Kata_turunan !== '') {
 
                                                         return (
                                                             <TouchableWithoutFeedback onPress={() => {
@@ -250,7 +250,7 @@ export default function Kategori({ navigation, route }) {
                                                                     fontFamily: fonts.primary[600],
                                                                     color: i.Kata_turunan == data.Kata_turunan ? colors.black : colors.secondary,
                                                                     fontSize: 15,
-                                                                }}>{i.Kata_turunan.split(' (').length > 0 ? i.Kata_turunan.split(' (')[0] : i.Kata_turunan}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
+                                                                }}>{KATA_TURUNAN}{index < TURUNAN.length - 1 ? ';' : ''} </Text>
 
 
                                                             </TouchableWithoutFeedback>
@@ -448,9 +448,9 @@ export default function Kategori({ navigation, route }) {
                                                 fontSize: 15,
                                             }}>kata Turunan : </Text>
                                                 {TURUNAN.map((i, index) => {
-                                                    let KATA_TURUNAN = i.Kata_turunan.split(' (').length > 0 ? i.Kata_turunan.split(' (')[0] : i.Kata_turunan;
+                                                    let KATA_TURUNAN = i.Kata_turunan;
 
-                                                    if (i.Kata_turunan !== '' && (KATA_TURUNAN !== TURUNAN[index - 1].Kata_turunan.split(' (')[0])) {
+                                                    if (i.Kata_turunan !== '') {
 
                                                         return (
                                                             <TouchableWithoutFeedback onPress={() => {
