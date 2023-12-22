@@ -102,11 +102,11 @@ export default function Home({ navigation, route }) {
               <Text style={{
                 fontFamily: fonts.secondary[800],
                 color: colors.white,
-                fontSize: 20,
+                fontSize: ((windowWidth * windowHeight) / 10000) / 1.4,
               }}>KAMUS DWIBAHASA</Text>
               <Text style={{
                 fontFamily: fonts.secondary[800],
-                fontSize: 14,
+                fontSize: ((windowWidth * windowHeight) / 10000) / 2,
                 color: colors.white
               }}>MELAYU AMBON - INDONESIA</Text>
             </View>
@@ -125,21 +125,21 @@ export default function Home({ navigation, route }) {
       }}>
         <Text style={{
           fontFamily: fonts.secondary[600],
-          fontSize: windowWidth / 25,
+          fontSize: ((windowWidth * windowHeight) / 10000) / 2,
           color: colors.black,
           textAlign: 'center'
         }}>Selamat datang di aplikasi
         </Text>
         <Text style={{
           fontFamily: fonts.secondary[600],
-          fontSize: windowWidth / 25,
+          fontSize: ((windowWidth * windowHeight) / 10000) / 2,
           color: colors.black,
           textAlign: 'center'
         }}>Kamus Dwibahasa Melayu Ambon-Indonesia
         </Text>
         <Text style={{
           fontFamily: fonts.secondary[600],
-          fontSize: windowWidth / 25,
+          fontSize: ((windowWidth * windowHeight) / 10000) / 2,
           color: colors.black,
           textAlign: 'center'
         }}>Kantor Bahasa Provinsi Maluku

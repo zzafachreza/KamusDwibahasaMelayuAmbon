@@ -17,18 +17,10 @@ export default function Turunan({ navigation, route }) {
 
     const [data, setData] = useState(route.params);
 
-
-
-
-
-    const TURUNAN = kamusData.filter(i => {
-        // 👇️ using AND (&&) operator
-        return i.Entri == data.Entri;
-    });
-    console.log(TURUNAN);
-
-
-
+    let KEY = route.params.Kata_turunan.split(" (").length > 1 ? route.params.Kata_turunan.split(" (")[0].trim() + ' (' : route.params.Kata_turunan.split(" (")[0].trim();
+    console.log('ini key', KEY);
+    const filterData = route.params.Kata_turunan.split(" (").length > 1 ? kamusData.filter(i => i.Kata_turunan.substring(0, KEY.length) == KEY.toLowerCase()) : kamusData.filter(i => i.Kata_turunan.toLowerCase() == KEY.toLowerCase());
+    console.log('ini data', filterData);
 
     return (
         <SafeAreaView style={{
@@ -40,174 +32,190 @@ export default function Turunan({ navigation, route }) {
 
             <ScrollView>
 
-                <Text style={{
-                    fontFamily: fonts.secondary[800],
-                    fontSize: 25,
-                }}>{data.Entri}</Text>
-                <Text style={{
-                    fontFamily: fonts.secondary[600],
-                    fontSize: 25,
-                }}>{data.Kata_turunan}</Text>
+                {filterData.length > 0 && filterData.map((item, index) => {
 
-                {data.Lafal.indexOf(";") <= 0 && <>
-                    <Text style={{
-                        fontFamily: fonts.secondary.normal,
-                        fontSize: 25,
-                    }}>{data.Lafal}</Text>
-                </>}
-
-                {/* KHUSUS LAFAL */}
-                {data.Lafal.indexOf(";") > 0 && data.Lafal.split(";").length == 2 &&
-                    <View style={{
-                        flexDirection: 'row',
-                        alignItems: 'center'
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: 25,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>{data.Lafal.split(";")[0]}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: 25,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>;</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: 25,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>{data.Lafal.split(";")[1]}</Text>
-                    </View>
-                }
-
-                {data.Lafal.indexOf(";") > 0 && data.Lafal.split(";").length == 3 &&
-                    <View style={{
-                        flexDirection: 'row',
-                        alignItems: 'center'
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: windowWidth / 15,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>{data.Lafal.split(";")[0]}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: windowWidth / 15,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>;</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: windowWidth / 15,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>{data.Lafal.split(";")[1]}</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary[400],
-                            fontSize: windowWidth / 15,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>;</Text>
-                        <Text style={{
-                            fontFamily: fonts.secondary.normal,
-                            fontSize: windowWidth / 15,
-                            fontWeight: 'normal',
-                            color: colors.black,
-                        }}>{data.Lafal.split(";")[2]}</Text>
-                    </View>
-                }
+                    const TURUNAN = kamusData.filter(i => {
+                        // 👇️ using AND (&&) operator
+                        return i.Entri == item.Entri;
+                    });
 
 
-                {data.Kelas_Kata_1.length > 0 && <View style={{
-                    padding: 10,
-                    borderRadius: 10,
-                    marginVertical: 5,
-                }}>
-                    <Text style={{
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 16,
-                        color: colors.danger,
-                    }}>{data.Kelas_Kata_1}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: 14,
-                    }}>{data.Definisi_1}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 14,
-                        fontStyle: 'italic'
-                    }}>{data.Contoh}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: 14,
-                    }}>{data.Terjemahan_Contoh}</Text>
-                </View>}
+                    return (
+                        <View>
+                            <Text style={{
+                                fontFamily: fonts.secondary[800],
+                                fontSize: 25,
+                            }}>{item.Entri}</Text>
+                            <Text style={{
+                                fontFamily: fonts.secondary[600],
+                                fontSize: 25,
+                            }}>{item.Kata_turunan}</Text>
 
-                {data.Kelas_Kata_2.length > 0 && <View style={{
-                    padding: 10,
-                    borderRadius: 10,
-                    marginVertical: 5,
-                }}>
-                    <Text style={{
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 16,
-                        color: colors.danger,
-                    }}>{data.Kelas_Kata_2}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: 14,
-                    }}>{data.Definisi_2}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 14,
-                        fontStyle: 'italic'
-                    }}>{data.Contoh_1}</Text>
+                            {/* KHUSUS LAFAL */}
+                            {item.Lafal.indexOf(";") <= 0 && <>
+                                <Text style={{
+                                    fontFamily: fonts.secondary.normal,
+                                    fontSize: 25,
+                                }}>{item.Lafal}</Text>
+                            </>}
 
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: 14,
-                    }}>{data.Terjemahan_Contoh_2}</Text>
-                </View>}
+                            {item.Lafal.indexOf(";") > 0 && item.Lafal.split(";").length == 2 &&
+                                <View style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 25,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>{item.Lafal.split(";")[0]}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 25,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>;</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 25,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>{item.Lafal.split(";")[1]}</Text>
+                                </View>
+                            }
 
-                {data.Kelas_Kata_3.length > 0 && <View style={{
-                    padding: 10,
-                    borderRadius: 10,
-                    marginVertical: 5,
-                }}>
-                    <Text style={{
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 16,
-                        color: colors.danger,
-                    }}>{data.Kelas_Kata_3}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: 14,
-                    }}>{data.Definisi_3}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[600],
-                        fontSize: 14,
-                        fontStyle: 'italic'
-                    }}>{data.Contoh_3}</Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: 14,
-                    }}>{data.Terjemahan_Contoh_4}</Text>
-                </View>}
+                            {item.Lafal.indexOf(";") > 0 && item.Lafal.split(";").length == 3 &&
+                                <View style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 25,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>{item.Lafal.split(";")[0]}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: 25,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>;</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: 25,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>{item.Lafal.split(";")[1]}</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[400],
+                                        fontSize: windowWidth / 15,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>;</Text>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary.normal,
+                                        fontSize: windowWidth / 15,
+                                        fontWeight: 'normal',
+                                        color: colors.black,
+                                    }}>{item.Lafal.split(";")[2]}</Text>
+                                </View>
+                            }
 
+                            {item.Kelas_Kata_1.length > 0 && <View style={{
+                                padding: 10,
+                                borderRadius: 10,
+                                marginVertical: 5,
+                            }}>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 16,
+                                    color: colors.danger,
+                                }}>{item.Kelas_Kata_1}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                }}>{item.Definisi_1}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 14,
+                                    fontStyle: 'italic'
+                                }}>{item.Contoh}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                }}>{item.Terjemahan_Contoh}</Text>
+                            </View>}
+
+                            {item.Kelas_Kata_2.length > 0 && <View style={{
+                                padding: 10,
+                                borderRadius: 10,
+                                marginVertical: 5,
+                            }}>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 16,
+                                    color: colors.danger,
+                                }}>{item.Kelas_Kata_2}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                }}>{item.Definisi_2}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 14,
+                                    fontStyle: 'italic'
+                                }}>{item.Contoh_1}</Text>
+
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                }}>{item.Terjemahan_Contoh_2}</Text>
+                            </View>}
+
+                            {item.Kelas_Kata_3.length > 0 && <View style={{
+                                padding: 10,
+                                borderRadius: 10,
+                                marginVertical: 5,
+                            }}>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 16,
+                                    color: colors.danger,
+                                }}>{item.Kelas_Kata_3}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                }}>{item.Definisi_3}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: 14,
+                                    fontStyle: 'italic'
+                                }}>{item.Contoh_3}</Text>
+                                <Text style={{
+                                    marginTop: 10,
+                                    fontFamily: fonts.secondary[400],
+                                    fontSize: 14,
+                                }}>{item.Terjemahan_Contoh_4}</Text>
+                            </View>}
+
+
+
+                        </View>
+
+
+                    )
+
+                })}
 
 
             </ScrollView>
